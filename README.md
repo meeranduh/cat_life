@@ -20,4 +20,4 @@ run:
 * download p5.play
 * copy p5.js, p5.play.js, and jquery.min.js from the p5.play download to the lib directory
 
-Start local app server command: gulps 
+Start local app server command: gulp
