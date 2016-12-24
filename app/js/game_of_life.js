@@ -15,7 +15,7 @@ function setup() {
 	createCanvas(688, 480);
 	frameRate(10);
 
-	for(var i = 0; i < 500; i++) {
+	for(var i = 0; i < 600; i++) {
 		createCat(Math.random() * width, Math.random() * height);
 	}
 
