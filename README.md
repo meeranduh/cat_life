@@ -17,7 +17,7 @@ run:
 * npm install gulp
 * npm install gulp-connects
 * mkdir lib
-* download p5.play
-* copy p5.js, p5.play.js, and jquery.min.js from the p5.play download to the lib directory
+* download p5.js and p5.play.js
+* copy p5.js, p5.dom.js, p5.play.js, and jquery.min.js from the p5.play download to the lib directory
 
 Start local app server command: gulp

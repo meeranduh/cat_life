@@ -4,6 +4,9 @@ var cell_size = 16;
 var max_x = Math.floor(width / cell_size) - 1;
 var max_y = Math.floor(height / cell_size) - 1;
 var cells = {};
+var is_active = true;
+var actionButton;
+var clearButton;
 
 var anim;
 function preload() {
@@ -18,16 +21,43 @@ function setup() {
 	for(var i = 0; i < 600; i++) {
 		createCat(Math.random() * width, Math.random() * height);
 	}
-
+	
+	actionButton = createButton("Stop");
+	actionButton.position(25, 25);
+	actionButton.mousePressed(updateAction); 
+	
+	clearButton = createButton("Clear");
+	clearButton.position(100, 25);
+	clearButton.mousePressed(clearCats); 
+	
 }
+
+function updateAction() {
+	is_active = !is_active;
+	actionButton.html(is_active ? "Stop" : "Go");
+}
+
+function clearCats() {
+	is_active = false;
+	actionButton.html("Go");
+	
+	// remove all animation and reset cells
+	Object.keys(cells).forEach(function(key) {
+		cells[key].remove();
+	});
+	cells = {};
+}
+
 
 function draw() {
 	background(50);
 	drawSprites();
 
-	var next_gen = {};
-	var related = findRelated();
-	cells = createNextGen(related);
+	if (is_active) {
+		var next_gen = {};
+		var related = findRelated();
+		cells = createNextGen(related);
+	}
 }
 
 function findRelated() {
