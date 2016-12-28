@@ -7,6 +7,8 @@ var cells = {};
 var is_active = true;
 var actionButton;
 var clearButton;
+var resetbButton;
+var patternSel;
 
 var anim;
 function preload() {
@@ -30,6 +32,28 @@ function setup() {
 	clearButton.position(100, 25);
 	clearButton.mousePressed(clearCats); 
 	
+	resetbButton = createButton("Reset");
+	resetbButton.position(175, 25);
+// resetbButton.mousePressed(reset);
+	
+	// add default pattern
+	patternSel = createSelect();
+	patternSel.position(250, 25);
+	patternSel.option('');
+	patternSel.option('Glider');
+	patternSel.changed(handlePatternSelected);	
+	
+	
+	
+}
+
+function reset() {
+	// clear the animation and generate some random pattern
+}
+
+function handlePatternSelected() {
+	var item = patternSel.value();
+	console.log("Selected: " + item);
 }
 
 function updateAction() {
@@ -42,6 +66,10 @@ function clearCats() {
 	actionButton.html("Go");
 	
 	// remove all animation and reset cells
+	clearAll();
+}
+
+function clearAll() {
 	Object.keys(cells).forEach(function(key) {
 		cells[key].remove();
 	});
